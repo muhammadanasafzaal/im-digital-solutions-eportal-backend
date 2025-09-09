@@ -1,0 +1,13 @@
+# Ignore Node.js dependencies
+node_modules/
+
+# Ignore environment variables or environment configuration files
+
+# Ignore JPEG files
+*.jpg
+*.jpeg
+*.png
+*.gif
+
+# Ignore PDF files
+*.pdf

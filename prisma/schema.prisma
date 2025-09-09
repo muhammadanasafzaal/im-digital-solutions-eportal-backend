@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Employee {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String
+  password  String
+  role      Role     @default(EMPLOYEE)
+  tasks     Task[]
+  timeLogs  TimeLog[]
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model Task {
+  id           Int       @id @default(autoincrement())
+  title        String
+  description  String?   // ✅ new field
+  client       String?
+  assignedTo   Int?      // ✅ make optional
+  assignee     Employee? @relation(fields: [assignedTo], references: [id])
+  date         DateTime  @default(now()) // ✅ auto default
+  perDayEdited Float?
+  reason       String?
+  duration     Int?
+  status       Status    @default(PENDING)
+  timeIn       DateTime?
+  timeOut      DateTime?
+  notes        String?
+  createdAt    DateTime  @default(now())
+} 
+
+model TimeLog {
+  id          Int      @id @default(autoincrement())
+  employeeId  Int
+  employee    Employee @relation(fields: [employeeId], references: [id])
+  date        DateTime
+  timeIn      DateTime
+  timeOut     DateTime
+  duration    Int
+  description String?   // ✅ added
+}
+
+enum Role {
+  ADMIN
+  EMPLOYEE
+  CLIENT
+}
+
+enum Status {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+}

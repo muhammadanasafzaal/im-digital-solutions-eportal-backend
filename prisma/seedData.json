@@ -1,0 +1,35 @@
+{
+  "employees": [
+    {
+      "name": "Ali Khan",
+      "email": "ali@example.com",
+      "password": "$2a$10$abcd...hash...", 
+      "role": "EMPLOYEE",
+      "tasks": [
+        {
+          "title": "Fix bugs in client dashboard",
+          "client": "ABC Corp",
+          "date": "2025-08-05",
+          "duration": 180,
+          "status": "COMPLETED",
+          "notes": "3 bugs fixed"
+        },
+        {
+          "title": "Prepare monthly report",
+          "client": "XYZ Ltd",
+          "date": "2025-08-10",
+          "duration": 240,
+          "status": "IN_PROGRESS"
+        }
+      ],
+      "timeLogs": [
+        {
+          "date": "2025-08-05",
+          "timeIn": "2025-08-05T09:00:00Z",
+          "timeOut": "2025-08-05T12:00:00Z",
+          "duration": 180
+        }
+      ]
+    }
+  ]
+}
