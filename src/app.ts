@@ -21,4 +21,3 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/reports', reportRoutes);
 
 export default app;
- 
